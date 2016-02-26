@@ -50,9 +50,9 @@ public class UserController {
 			user.setPassword(userRequest.getPassword());
 			user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
 
-			boolean isUsernExisting = userService.isExisting(user);
+			boolean isUserExisting = userService.isExisting(user);
 
-			if (isUsernExisting) {
+			if (isUserExisting) {
 				model.addAttribute("error", "Username is taken!");
 			} else {
 				userService.create(user);
