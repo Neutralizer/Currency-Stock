@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+
 <title>Login Page</title>
 <style>
 .error {
@@ -10,6 +11,16 @@
 	border-radius: 4px;
 	color: #a94442;
 	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.success {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #000000;
+	background-color: #A2DEB1;
 	border-color: #ebccd1;
 }
 
@@ -43,6 +54,11 @@
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>
+		
+		<c:if test="${not empty success}">
+			<div class="success">${success}</div>
+		</c:if>
+		
 		<form name='registrationForm'
 			action="/registration" method='POST'>
 
@@ -71,12 +87,12 @@
 					</td>
 				</tr>
 			</table>
-
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
-
 		</form>
 	</div>
+	
+	<button class="btn btn-primary" onclick="location.href='/login'">Login</button>
 
 </body>
 </html>

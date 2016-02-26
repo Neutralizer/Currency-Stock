@@ -13,12 +13,24 @@
 			</div>
 		</div>
 		<form action="/stock/" method="POST">
-			<div class="row">
+			<%-- <div class="row">
 				<div class="col-lg-4 col-lg-offset-4">
 					<input type="search" id="search" value="${searchedValue}"
-						name="name" class="form-control" placeholder="Search for stock">
+						name="name" class="form-control" placeholder="Search for currency">
 				</div>
 				<input type="submit" class="btn" value="Search" />
+
+			</div> --%>
+
+			<div class="col-lg-4 col-lg-offset-4">
+				<div class="input-group">
+					<input type="text" class="form-control" value="${searchedValue}"
+						placeholder="Search for currency"> <span
+						class="input-group-btn"> <input class="btn btn-default"
+						type="submit" value="Search" />
+					</span>
+				</div>
+				<!-- /input-group -->
 			</div>
 		</form>
 		<div class="row">

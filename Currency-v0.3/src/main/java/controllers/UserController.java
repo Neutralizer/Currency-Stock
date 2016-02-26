@@ -27,37 +27,47 @@ public class UserController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String getRegistration(Model model) {
-		Collection<String> roleList = new ArrayList<String>();
-		roleList.add("user");
-		roleList.add("admin");
-		
+		// Collection<String> roleList = new ArrayList<String>();
+		// roleList.add("user");
+		// roleList.add("admin");
+		Collection<Role> roleList = userService.getRoles();
+
 		model.addAttribute("roleList", roleList);
-		
+
 		return "registration";
 	}
-	
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String update(Model model, @ModelAttribute UserRequestData userRequest) {
-		
 
-		User user = new User();
-		user.setUsername(userRequest.getUsername());
-		user.setPassword(userRequest.getPassword());
-		user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
-		
-		boolean flag = userService.isExisting(user);
-		
-		if (flag) {
-			model.addAttribute("error", "Username is taken!");
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public String register(Model model, @ModelAttribute UserRequestData userRequest) {
+
+		String regexValidator = "^[a-z0-9_-]{3,15}$";
+
+		if (userRequest.getUsername().matches(regexValidator)
+				&& userRequest.getPassword().matches(regexValidator)) {
+
+			User user = new User();
+			user.setUsername(userRequest.getUsername());
+			user.setPassword(userRequest.getPassword());
+			user.setRole(Role.valueOf(userRequest.getRole().toUpperCase()));
+
+			boolean isUsernExisting = userService.isExisting(user);
+
+			if (isUsernExisting) {
+				model.addAttribute("error", "Username is taken!");
+			} else {
+				userService.create(user);
+				model.addAttribute("success", "Username successfully created!");
+			}
+
 		} else {
-			userService.create(user);
+			model.addAttribute("error", "Username or password is not valid!");
 		}
 
-//		Collection<Currency> currencyList = currencyService.getAll();
-//		model.addAttribute("currencyList", currencyList);
+		// Collection<Currency> currencyList = currencyService.getAll();
+		// model.addAttribute("currencyList", currencyList);
 
-		return "registration";
+		// return "redirect:/registration";
+		return getRegistration(model);
 	}
-	
-	
+
 }

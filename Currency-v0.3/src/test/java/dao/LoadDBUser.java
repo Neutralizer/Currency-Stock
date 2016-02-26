@@ -36,8 +36,19 @@ public class LoadDBUser {
 
 		String sql = "create table role (name VARCHAR(50) not null)";
 		jdbcTemplate.execute(sql);
+		
+		
 
 	}
+	
+	@Test
+	public void testfillTableRoles() {
+		String sql = "insert into role values ('USER')";
+		jdbcTemplate.execute(sql);
+		String sql1 = "insert into role (name) values ('ADMIN')";
+		jdbcTemplate.execute(sql1);
+	}
+	
 	
 	@Test
 	public void testCreateTableUser() {

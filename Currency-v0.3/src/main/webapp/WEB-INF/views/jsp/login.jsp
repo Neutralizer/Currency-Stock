@@ -70,6 +70,9 @@
 
 		</form>
 	</div>
+	
+	<button class="btn btn-primary" onclick="location.href='/registration'">Register</button>
+	
 
 </body>
 </html>
