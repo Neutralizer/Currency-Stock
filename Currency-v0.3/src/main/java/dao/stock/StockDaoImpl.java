@@ -75,7 +75,7 @@ public class StockDaoImpl implements StockDao {
 
 		public Stock mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 			Stock stock = new Stock.Builder().id(resultSet.getInt("id")).name(resultSet.getString("name"))
-					.buy(resultSet.getFloat("buy")).sell(resultSet.getFloat("sell")).build();
+					.buy(resultSet.getString("buy")).sell(resultSet.getString("sell")).build();
 
 			// currency.setId(resultSet.getInt("id"));
 			// currency.setName(resultSet.getString("name"));

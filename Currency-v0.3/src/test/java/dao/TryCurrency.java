@@ -36,8 +36,8 @@ public class TryCurrency {
 		
 		Currency curr = new Currency.Builder()
 				.name("dollar")
-				.buy(2.2f)
-				.sell(3.3f)
+				.buy("2.2")
+				.sell("3.3")
 				.build();
 
 		dao.insert(curr);
@@ -52,8 +52,8 @@ public class TryCurrency {
 		Currency curr1 = new Currency.Builder()
 				.id(currency.getId())
 				.name("dollar")
-				.buy(2.2f)
-				.sell(33.3f)
+				.buy("2.2")
+				.sell("33.3")
 				.build();
 
 		dao.update(curr1);
@@ -62,8 +62,8 @@ public class TryCurrency {
 		
 		Currency curr2 = new Currency.Builder()
 				.name("frank")
-				.buy(22.2f)
-				.sell(33.3f)
+				.buy("22.2")
+				.sell("33.3")
 				.build();
 
 		dao.insert(curr2);

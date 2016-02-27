@@ -80,8 +80,8 @@ public class CurrencyDaoImpl implements CurrencyDao {
 			Currency currency = new Currency.Builder()
 					.id(resultSet.getInt("id"))
 					.name(resultSet.getString("name"))
-					.buy(resultSet.getFloat("buy"))
-					.sell(resultSet.getFloat("sell"))
+					.buy(resultSet.getString("buy"))
+					.sell(resultSet.getString("sell"))
 					.build();
 					
 					

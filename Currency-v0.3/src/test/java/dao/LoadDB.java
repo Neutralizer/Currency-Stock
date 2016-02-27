@@ -58,8 +58,8 @@ public class LoadDB {
 		
 		Currency curr = new Currency.Builder()
 				.name("dollar")
-				.buy(2.2f)
-				.sell(3.3f)
+				.buy("2.2")
+				.sell("3.3")
 				.build();
 //		curr.setName("Dordoba");
 //		curr.setBuy(22.1f);
