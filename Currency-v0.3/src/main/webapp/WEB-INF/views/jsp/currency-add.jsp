@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,25 +37,23 @@
 			</div>
 		</div>
 		<form:form action="/currency/add" method="POST">
-		<div class="form-bottom">
-			<form role="form" action="" method="post" class="registration-form">
-				<div class="form-group">
-					<h5>Currency</h5>
-					<input type="text" name="name"	class="form-first-name form-control" id="form-first-name">
-				</div>
-				<div class="form-group">
-					<h5>Buy</h5>
-					<input type="text" name="buy"
-						class="form-last-name form-control" id="form-last-name">
-				</div>
-				<div class="form-group">
-					<h5>Sell</h5>
-					<input type="text" name="sell"
-						class="form-email form-control" id="form-email">
-				</div>
-				<input type="submit" class="btn" value="Add" />
-			</form>
-		</div>
+			<div class="form-bottom">
+					<div class="form-group">
+						<h5>Currency</h5>
+						<input type="text" name="name"	class="form-first-name form-control" id="form-first-name">
+					</div>
+					<div class="form-group">
+						<h5>Buy</h5>
+						<input type="text" name="buy"
+							class="form-last-name form-control" id="form-last-name">
+					</div>
+					<div class="form-group">
+						<h5>Sell</h5>
+						<input type="text" name="sell"
+							class="form-email form-control" id="form-email">
+					</div>
+					<input type="submit" class="btn" value="Add" />
+			</div>
 		</form:form>
 	</div>
 

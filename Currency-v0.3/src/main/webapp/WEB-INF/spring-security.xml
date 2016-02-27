@@ -7,8 +7,14 @@
 
 
 	<http auto-config="true">
-		<intercept-url pattern="/" access="isAuthenticated()" />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/registration" access="permitAll" />
 		<intercept-url pattern="/currency/edit" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/stock/edit" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/currency/add" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/stock/add" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+		
 		
 		<form-login 
 		    login-page="/login" 

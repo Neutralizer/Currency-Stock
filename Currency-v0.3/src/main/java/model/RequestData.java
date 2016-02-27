@@ -3,8 +3,8 @@ package model;
 public class RequestData {
 	private int id;
 	private String name;
-	private float buy;
-	private float sell;
+	private String buy;
+	private String sell;
 
 	public int getId() {
 		return id;
@@ -22,19 +22,23 @@ public class RequestData {
 		this.name = name;
 	}
 
-	public float getBuy() {
+	public String getBuy() {
 		return buy;
 	}
 
-	public void setBuy(float buy) {
+	public void setBuy(String buy) {
 		this.buy = buy;
 	}
 
-	public float getSell() {
+	public String getSell() {
 		return sell;
 	}
 
-	public void setSell(float sell) {
+	public void setSell(String sell) {
 		this.sell = sell;
 	}
+	
+	
+	
 }
+

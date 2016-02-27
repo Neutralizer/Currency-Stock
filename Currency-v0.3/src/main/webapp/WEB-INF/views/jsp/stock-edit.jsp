@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +37,12 @@
 			</div>
 		</div>
 		<form:form action="/stock/edit" method="POST">
+		
+		<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+		
 		<div class="form-bottom">
-			<form role="form" action="" method="post" class="registration-form">
 				<div class="form-group">
 					<h5>Stock</h5>
 					<input type="text" name="name" value="${stock.name}"	
@@ -55,7 +60,6 @@
 				</div>
 				<input type="hidden" name="id"  value="${stock.id}"> 
 				<input type="submit" class="btn" value="Save changes" />
-			</form>
 		</div>
 		</form:form>
 	</div>

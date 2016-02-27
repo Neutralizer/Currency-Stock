@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-
 <title>Login Page</title>
 <style>
+/* <link rel="stylesheet" href="/resources/core/css/bootstrap.min.css"> */
 .error {
 	padding: 15px;
 	margin-bottom: 20px;
@@ -45,7 +45,7 @@
 }
 </style>
 </head>
-<body onload='document.loginForm.username.focus();'>
+<body>
 
 	<div id="login-box">
 

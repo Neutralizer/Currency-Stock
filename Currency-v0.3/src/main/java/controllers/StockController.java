@@ -48,15 +48,24 @@ public class StockController {
 
 	@RequestMapping(value = "/stock/edit", method = RequestMethod.POST)
 	public String update(Model model, @ModelAttribute RequestData stockRequest) {
-		Stock stock = new Stock.Builder().id(stockRequest.getId()).name(stockRequest.getName())
-				.buy(stockRequest.getBuy()).sell(stockRequest.getSell()).build();
 
-		stockService.update(stock);
+		if (stockRequest.getName().equals("") || stockRequest.getBuy().equals("")|| stockRequest.getSell().equals("")) {
+			model.addAttribute("error", "All fields are required!");
 
-		Collection<Stock> stockList = stockService.getAll();
-		model.addAttribute("stockList", stockList);
+			return edit(model, stockRequest.getId());
+		} else {
 
-		return "redirect:/stock";
+			Stock stock = new Stock.Builder().id(stockRequest.getId()).name(stockRequest.getName())
+					.buy(stockRequest.getBuy()).sell(stockRequest.getSell()).build();
+
+			stockService.update(stock);
+
+			Collection<Stock> stockList = stockService.getAll();
+			model.addAttribute("stockList", stockList);
+
+			return "redirect:/stock";
+		}
+
 	}
 
 	@RequestMapping(value = "/stock/add", method = RequestMethod.GET)

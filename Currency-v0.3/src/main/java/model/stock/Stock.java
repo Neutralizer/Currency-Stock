@@ -51,13 +51,14 @@ public class Stock {
 			return this;
 		}
 
-		public Builder buy(float buy) {
-			this.buy = buy;
+		public Builder buy(String buy) {
+			
+			this.buy = Float.valueOf(buy);
 			return this;
 		}
 
-		public Builder sell(float sell) {
-			this.sell = sell;
+		public Builder sell(String sell) {
+			this.sell = Float.valueOf(sell);
 			return this;
 		}
 	}

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +38,6 @@
 		</div>
 		<form:form action="/stock/add" method="POST">
 		<div class="form-bottom">
-			<form role="form" action="" method="post" class="registration-form">
 				<div class="form-group">
 					<h5>Stock</h5>
 					<input type="text" name="name"	class="form-first-name form-control" id="form-first-name">
@@ -53,7 +53,6 @@
 						class="form-email form-control" id="form-email">
 				</div>
 				<input type="submit" class="btn" value="Add" />
-			</form>
 		</div>
 		</form:form>
 	</div>

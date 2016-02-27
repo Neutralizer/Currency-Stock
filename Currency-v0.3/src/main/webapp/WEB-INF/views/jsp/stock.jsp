@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 <link rel="stylesheet" href="/resources/core/css/bootstrap.min.css">
@@ -12,7 +13,7 @@
 				<h3>Stock Table</h3>
 			</div>
 		</div>
-		<form action="/stock/" method="POST">
+		<form:form action="/stock/" method="POST">
 			<%-- <div class="row">
 				<div class="col-lg-4 col-lg-offset-4">
 					<input type="search" id="search" value="${searchedValue}"
@@ -24,7 +25,7 @@
 
 			<div class="col-lg-4 col-lg-offset-4">
 				<div class="input-group">
-					<input type="text" class="form-control" value="${searchedValue}"
+					<input type="text" name="name" class="form-control" value="${searchedValue}"
 						placeholder="Search for currency"> <span
 						class="input-group-btn"> <input class="btn btn-default"
 						type="submit" value="Search" />
@@ -32,7 +33,7 @@
 				</div>
 				<!-- /input-group -->
 			</div>
-		</form>
+		</form:form>
 		<div class="row">
 			<div class="col-lg-12">
 				<table class="table" id="table">
