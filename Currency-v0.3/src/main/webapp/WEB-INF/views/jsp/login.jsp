@@ -4,7 +4,7 @@
 	
 	<title>Login Page</title>
 	<style>
-	<link rel="stylesheet" href="/resources/core/css/bootstrap.min.css">
+/* 	<link rel="stylesheet" href="/resources/core/css/bootstrap.min.css"> */
 	.error {
 		padding: 15px;
 		margin-bottom: 20px;

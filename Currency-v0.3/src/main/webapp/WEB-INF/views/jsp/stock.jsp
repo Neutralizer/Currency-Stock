@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
 <link rel="stylesheet" href="/resources/core/css/bootstrap.min.css">
@@ -51,10 +52,12 @@
 								<td>${stock.buy}</td>
 								<td>${stock.sell}</td>
 								<td>
+								<sec:authorize access="hasRole('ADMIN')">
 									<button class="btn btn-primary"
 										onclick="location.href='/stock/edit?id=${stock.id}'">Edit</button>
 									<button class="btn btn-danger"
 										onclick="location.href='/stock/delete?id=${stock.id}'">Delete</button>
+								</sec:authorize>
 								</td>
 							</tr>
 						</c:forEach>
@@ -63,8 +66,12 @@
 				<hr>
 			</div>
 		</div>
-		<button class="btn btn-primary" onclick="location.href='/stock/add'">Add
-			Stock</button>
+		<sec:authorize access="hasRole('ADMIN')">
+			<button class="btn btn-primary" onclick="location.href='/stock/add'">Add
+				Stock</button>
+		</sec:authorize>
+			<button class="btn btn-primary"
+				onclick="location.href='/'">Return to Main</button>
 	</div>
 
 

@@ -6,13 +6,17 @@
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
 
-	<http auto-config="true">
+	<http auto-config="true" >  
+<!-- 	use-expressions="true" -->
+	
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/registration" access="permitAll" />
 		<intercept-url pattern="/currency/edit" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/stock/edit" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/currency/add" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/stock/add" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/currency/delete" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/stock/delete" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		
 		
@@ -32,6 +36,12 @@
 
 	<authentication-manager>
 		<authentication-provider>
+<!-- 		<jdbc-user-service data-source-ref="dataSource" -->
+<!-- 		users-by-username-query= -->
+<!-- 		"select username, password, role from user where username = ?" -->
+<!-- 		/> -->
+		
+		
 			<user-service>
 				<user name="user" password="1" authorities="ROLE_USER" />
 				<user name="admin" password="2" authorities="ROLE_ADMIN" />

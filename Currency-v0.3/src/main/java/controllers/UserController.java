@@ -40,7 +40,7 @@ public class UserController {
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String register(Model model, @ModelAttribute UserRequestData userRequest) {
 
-		String regexValidator = "^[a-z0-9_-]{3,15}$";
+		String regexValidator = "^[A-Za-z0-9_-]{3,15}$";
 
 		if (userRequest.getUsername().matches(regexValidator)
 				&& userRequest.getPassword().matches(regexValidator)) {

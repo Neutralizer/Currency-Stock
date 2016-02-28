@@ -47,23 +47,32 @@ public class CurrencyController {
 
 	@RequestMapping(value = "/currency/edit", method = RequestMethod.POST)
 	public String update(Model model, @ModelAttribute RequestData currencyRequest) {
+		
+		String floatRegexValidator = "^[0-9.]{1,15}$";
+
+		if (currencyRequest.getName().equals("") 
+				|| currencyRequest.getBuy().equals("")
+				|| currencyRequest.getSell().equals("")
+				|| !currencyRequest.getBuy().matches(floatRegexValidator)
+				|| !currencyRequest.getSell().matches(floatRegexValidator)) {
+			model.addAttribute("error", "All fields must be valid!");
+
+			return edit(model, currencyRequest.getId());
+		} else {
+		
+		
 		Currency currency = new Currency.Builder()
 				.id(currencyRequest.getId())
 				.name(currencyRequest.getName())
 				.buy(currencyRequest.getBuy())
 				.sell(currencyRequest.getSell())
 				.build();
-//		currency.setId(currencyRequest.getId());
-//		currency.setName(currencyRequest.getName());
-//		currency.setBuy(currencyRequest.getBuy());
-//		currency.setSell(currencyRequest.getSell());
 
 		currencyService.update(currency);
 
-//		Collection<Currency> currencyList = currencyService.getAll();
-//		model.addAttribute("currencyList", currencyList);
 
 		return "redirect:/currency";
+		}
 	}
 	
 	
@@ -76,22 +85,30 @@ public class CurrencyController {
 	
 	@RequestMapping(value = "/currency/add", method = RequestMethod.POST)
 	public String save(Model model, @ModelAttribute RequestData currencyRequest) {
+		
+		String floatRegexValidator = "^[0-9.]{1,15}$";
+
+		if (currencyRequest.getName().equals("") 
+				|| currencyRequest.getBuy().equals("")
+				|| currencyRequest.getSell().equals("")
+				|| !currencyRequest.getBuy().matches(floatRegexValidator)
+				|| !currencyRequest.getSell().matches(floatRegexValidator)) {
+			model.addAttribute("error", "All fields must be valid!");
+
+			return add(model);
+			
+		} else {
 		Currency currency = new Currency.Builder()
 				.name(currencyRequest.getName())
 				.buy(currencyRequest.getBuy())
 				.sell(currencyRequest.getSell())
 				.build();
-				
-//		currency.setName(currencyRequest.getName());
-//		currency.setBuy(currencyRequest.getBuy());
-//		currency.setSell(currencyRequest.getSell());
 
 		currencyService.add(currency);
 
-		Collection<Currency> currencyList = currencyService.getAll();
-		model.addAttribute("currencyList", currencyList);
 
-		return "/currency";
+		return "redirect:/currency";
+		}
 	}
 
 	@RequestMapping(value = "/currency/delete", method = RequestMethod.GET)

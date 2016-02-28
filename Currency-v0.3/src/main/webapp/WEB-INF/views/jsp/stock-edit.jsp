@@ -4,6 +4,17 @@
 <html lang="en">
 
 <head>
+<style>
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+</style>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +73,10 @@
 				<input type="submit" class="btn" value="Save changes" />
 		</div>
 		</form:form>
+		<button class="btn btn-primary"
+			onclick="location.href='/stock'">Return to Stock</button>
 	</div>
+	
 
 	<!-- Javascript -->
 	<script src="assets/js/jquery-1.11.1.min.js"></script>

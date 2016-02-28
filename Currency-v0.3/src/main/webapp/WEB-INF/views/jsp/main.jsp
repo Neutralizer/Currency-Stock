@@ -22,18 +22,18 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-5 col-lg-offset-3">
-				<h3>You have been logged in successfully</h3>
+			<div class="col-lg-5 col-lg-offset-3" align="center">
+				<h3>You are logged in!</h3>
 			</div>
 		</div>
 
 		<br> <br>
 
-		<div class="col-lg-4 col-lg-offset-4">
+		<div class="col-lg-4 col-lg-offset-4" align="center">
 			<button class="btn btn-primary" onclick="location.href='/currency/'">Currency</button>
 			<button class="btn btn-primary" onclick="location.href='/stock/'">Stock</button>
 		</div>
-		<div align="col-lg-4 col-lg-offset-4">
+		<div class="col-lg-4 col-lg-offset-4" align="center">
 			<button class="btn btn-danger"
 				onclick="location.href='javascript:formSubmit()'">Logout</button>
 		</div>

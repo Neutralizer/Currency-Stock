@@ -5,6 +5,18 @@
 
 <head>
 
+<style>
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+</style>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,6 +49,11 @@
 			</div>
 		</div>
 		<form:form action="/stock/add" method="POST">
+		
+		<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+		
 		<div class="form-bottom">
 				<div class="form-group">
 					<h5>Stock</h5>
@@ -55,6 +72,8 @@
 				<input type="submit" class="btn" value="Add" />
 		</div>
 		</form:form>
+		<button class="btn btn-primary"
+			onclick="location.href='/stock'">Return to Stock</button>
 	</div>
 
 	<!-- Javascript -->

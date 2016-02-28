@@ -48,9 +48,14 @@ public class StockController {
 
 	@RequestMapping(value = "/stock/edit", method = RequestMethod.POST)
 	public String update(Model model, @ModelAttribute RequestData stockRequest) {
+		String floatRegexValidator = "^[0-9.]{1,15}$";
 
-		if (stockRequest.getName().equals("") || stockRequest.getBuy().equals("")|| stockRequest.getSell().equals("")) {
-			model.addAttribute("error", "All fields are required!");
+		if (stockRequest.getName().equals("") 
+				|| stockRequest.getBuy().equals("")
+				|| stockRequest.getSell().equals("")
+				|| !stockRequest.getBuy().matches(floatRegexValidator)
+				|| !stockRequest.getSell().matches(floatRegexValidator)) {
+			model.addAttribute("error", "All fields must be valid!");
 
 			return edit(model, stockRequest.getId());
 		} else {
@@ -76,6 +81,19 @@ public class StockController {
 
 	@RequestMapping(value = "/stock/add", method = RequestMethod.POST)
 	public String save(Model model, @ModelAttribute RequestData stockRequest) {
+		
+		String floatRegexValidator = "^[0-9.]{1,15}$";
+
+		if (stockRequest.getName().equals("") 
+				|| stockRequest.getBuy().equals("")
+				|| stockRequest.getSell().equals("")
+				|| !stockRequest.getBuy().matches(floatRegexValidator)
+				|| !stockRequest.getSell().matches(floatRegexValidator)) {
+			model.addAttribute("error", "All fields must be valid!");
+
+			return add(model);
+		} else {
+		
 		Stock stock = new Stock.Builder().name(stockRequest.getName()).buy(stockRequest.getBuy())
 				.sell(stockRequest.getSell()).build();
 
@@ -85,6 +103,7 @@ public class StockController {
 		model.addAttribute("stockList", stockList);
 
 		return "redirect:/stock";
+		}
 	}
 
 	@RequestMapping(value = "/stock/delete", method = RequestMethod.GET)

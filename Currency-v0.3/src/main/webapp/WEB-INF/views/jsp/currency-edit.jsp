@@ -4,6 +4,17 @@
 <html lang="en">
 
 <head>
+<style>
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+</style>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +48,11 @@
 			</div>
 		</div>
 		<form:form action="/currency/edit" method="POST">
+		
+		<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+		
 		<div class="form-bottom">
 				<div class="form-group">
 					<h5>Currency</h5>
@@ -56,6 +72,8 @@
 				<input type="submit" class="btn" value="Save changes" />
 		</div>
 		</form:form>
+		<button class="btn btn-primary"
+			onclick="location.href='/currency'">Return to Currency</button>
 	</div>
 
 	<!-- Javascript -->
