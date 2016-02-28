@@ -1,8 +1,13 @@
 package services.user;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import dao.user.UserDao;
 import model.user.Role;
@@ -24,5 +29,6 @@ public class UserServiceImpl implements UserService {
 	public boolean isExisting(User user) {
 		return userDao.isExisting(user);
 	}
+
 
 }

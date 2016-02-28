@@ -22,6 +22,9 @@ public class TestRegex {
 		
 		assertTrue(flag);
 		
+		String test = "DEssd123dsDAS";
+		
+		System.out.println(test.toLowerCase());
 		
 		
 		

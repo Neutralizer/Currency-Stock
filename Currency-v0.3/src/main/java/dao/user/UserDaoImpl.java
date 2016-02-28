@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import model.user.Role;
@@ -28,7 +31,7 @@ public class UserDaoImpl implements UserDao {
 
 	public void persist(User user) {
 		String sql = "insert into user (username, password, role) values (?,?,?)";
-		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getRole());
+		jdbcTemplate.update(sql, user.getUsername().toLowerCase(), user.getPassword(), user.getRole());
 	}
 
 	public Collection<Role> findRoles() {
@@ -43,7 +46,7 @@ public class UserDaoImpl implements UserDao {
 	public boolean isExisting(User user) {
 		String sql = "select * from user where username = ?";
 		try {
-		jdbcTemplate.queryForObject(sql, new Object[] { user.getUsername() }, new UserMapper());
+		jdbcTemplate.queryForObject(sql, new Object[] { user.getUsername().toLowerCase() }, new UserMapper());
 		} catch (EmptyResultDataAccessException e) {
 			return false;
 		}
@@ -73,5 +76,17 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
+
+	public User getUser(String username) {
+		String sql = "select * from user where username = ?";
+		try {
+		return jdbcTemplate.queryForObject(sql, new Object[] { username }, new UserMapper());
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
+		
+		
+	}
+
 
 }
